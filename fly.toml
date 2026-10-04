@@ -1,4 +1,4 @@
-app = "ragib-librechat-code"
+app = "librechat-code-fly"
 primary_region = "sin"
 
 [build]
@@ -7,16 +7,10 @@ primary_region = "sin"
 [env]
   NODE_ENV = "production"
 
-# The worker uses an outbound connection to the paired Code API.
-# No public worker port is required.
-#
-# After pairing, set:
-# LIBRECHAT_CODE_SANDBOX_ENDPOINT = "<sandbox endpoint from the pairing flow>"
-
 [[vm]]
-  memory = "1gb"
+  memory = "2gb"
   cpu_kind = "shared"
-  cpus = 1
+  cpus = 2
 
 [[mounts]]
   source = "code_data"
