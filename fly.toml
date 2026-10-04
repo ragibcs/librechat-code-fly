@@ -1,18 +1,32 @@
-app = "librechat-code-fly"
-primary_region = "sin"
+# fly.toml app configuration file generated for librechat-code-fly on 2026-10-04T22:45:51Z
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'librechat-code-fly'
+primary_region = 'sin'
 
 [build]
-  dockerfile = "Dockerfile"
+  dockerfile = 'Dockerfile'
 
 [env]
-  NODE_ENV = "production"
-
-[[vm]]
-  memory = "2gb"
-  cpu_kind = "shared"
-  cpus = 2
+  NODE_ENV = 'production'
 
 [[mounts]]
-  source = "code_data"
-  destination = "/mnt/data"
-  initial_size = "10gb"
+  source = 'code_data'
+  destination = '/mnt/data'
+  initial_size = '10gb'
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  memory = '2gb'
+  cpu_kind = 'shared'
+  cpus = 2
+  memory_mb = 2048
