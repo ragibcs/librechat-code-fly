@@ -1,0 +1,24 @@
+app = "ragib-librechat-code"
+primary_region = "sin"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  NODE_ENV = "production"
+
+# The worker uses an outbound connection to the paired Code API.
+# No public worker port is required.
+#
+# After pairing, set:
+# LIBRECHAT_CODE_SANDBOX_ENDPOINT = "<sandbox endpoint from the pairing flow>"
+
+[[vm]]
+  memory = "1gb"
+  cpu_kind = "shared"
+  cpus = 1
+
+[[mounts]]
+  source = "code_data"
+  destination = "/mnt/data"
+  initial_size = "10gb"
